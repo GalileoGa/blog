@@ -25,7 +25,7 @@ public class UserController {
 
 	@GetMapping("/url")
 	public String getUrl() {
-		return "/https://github.com/GalileoGa/blog.git";
+		return "https://github.com/GalileoGa/blog.git";
 	}
 
 	@GetMapping("/user/list")
