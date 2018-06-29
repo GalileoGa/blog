@@ -1,4 +1,4 @@
-package com.ning.blog.servic;
+package com.ning.blog.service;
 
 import com.ning.blog.domain.UserDO;
 import com.ning.blog.repository.UserMapper;

@@ -1,7 +1,7 @@
 package com.ning.blog.controller;
 
 import com.ning.blog.domain.UserDO;
-import com.ning.blog.servic.UserService;
+import com.ning.blog.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
