@@ -27,5 +27,5 @@ hs_err_pid*
 .gitignore
 .idea/
 blog.iml
-src/main/resources/
 src/test/
+target/
