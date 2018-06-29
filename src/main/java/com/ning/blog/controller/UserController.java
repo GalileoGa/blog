@@ -40,6 +40,6 @@ public class UserController {
 
 	@PostMapping("/user/save")
 	public String saveUser(UserDO user) {
-		return "成功！！！";
+		return userService.saveUser(user)==1?"成功！":"失败";
 	}
 }
