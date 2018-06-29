@@ -2,8 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ning.blog.repository.UserMapper">
 
-    <select id="listUser" resultType="UserDO">
-      select * from blog_user;
-    </select>
+	<select id="listUser" resultType="UserDO">
+		select * from blog_user;
+	</select>
+	<select id="getUserById" resultType="UserDO">
+		select * from blog_user where id = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserDO">
+		insert into blog_user (username,password) value(#{username},#{password})
+	</insert>
 
 </mapper>

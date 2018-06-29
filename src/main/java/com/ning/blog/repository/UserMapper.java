@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     List<UserDO> listUser();
+    UserDO getUserById(int id);
+    int insertUser(UserDO user);
 }

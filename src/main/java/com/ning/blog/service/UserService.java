@@ -10,10 +10,18 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Resource
-    private UserMapper userMapper;
+	@Resource
+	private UserMapper userMapper;
 
-    public List<UserDO> listUser() {
-        return userMapper.listUser();
-    }
+	public List<UserDO> listUser() {
+		return userMapper.listUser();
+	}
+
+	public UserDO getUserById(int id) {
+		return userMapper.getUserById(id);
+	}
+
+	public int saveUser(UserDO user) {
+		return userMapper.insertUser(user);
+	}
 }
