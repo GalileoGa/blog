@@ -1,45 +1,57 @@
 package com.ning.blog.controller;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.ning.blog.domain.UserDO;
 import com.ning.blog.service.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+import javax.annotation.Resource;
+import java.util.List;
+
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
-	@Resource
-	private UserService userService;
+    @Resource
+    private UserService userService;
 
-	@GetMapping("/index")
-	public String index() {
-		return "hello world";
-	}
+    @GetMapping("/register")
+    public String signUp() {
+        return "register";
+    }
 
-	@GetMapping("/url")
-	public String getUrl() {
-		return "https://github.com/GalileoGa/blog.git";
-	}
+    @PostMapping("/login")
+    public String login(UserDO userDO) {
+        if(userDO != null) {
+            return "/index";
+        }
+        return "/index";
+    }
 
-	@GetMapping("/user/list")
-	public List<UserDO> listUser() {
-		return userService.listUser();
-	}
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
 
-	@GetMapping("/user/{id}")
-	public UserDO getUserById(@PathVariable int id) {
-		return userService.getUserById(id);
-	}
+    @GetMapping("/url")
+    @ResponseBody
+    public String getUrl() {
+        return "https://github.com/GalileoGa/blog.git";
+    }
 
-	@PostMapping("/user/save")
-	public String saveUser(UserDO user) {
-		return userService.saveUser(user)==1?"成功！":"失败";
-	}
+    @GetMapping("/list")
+    @ResponseBody
+    public List<UserDO> listUser() {
+        return userService.listUser();
+    }
+
+    @GetMapping("/{id}")
+    public UserDO getUserById(@PathVariable int id) {
+        return userService.getUserById(id);
+    }
+
+    @PostMapping("/save")
+    public String saveUser(UserDO user) {
+        return userService.saveUser(user) == 1 ? "成功！" : "失败";
+    }
 }
