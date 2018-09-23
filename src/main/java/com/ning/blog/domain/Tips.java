@@ -1,12 +1,13 @@
 package com.ning.blog.domain;
 
 import lombok.Data;
-import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
-@ToString
-public class Tips extends Common{
+public class Tips extends Common {
     private int id;
     private int userId;
     private Date creteTime;
