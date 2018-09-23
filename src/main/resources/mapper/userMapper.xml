@@ -10,7 +10,27 @@
 	</select>
 
     <insert id="insertUser" parameterType="User">
-		insert into zn_user (username,password) value(#{username},#{password})
+		INSERT INTO zn_user (
+			`userName`,
+			`loginName`,
+			`password`,
+			`createTime`,
+			`updateTime`,
+			`brithday`,
+			`salt`,
+			`weight`
+		)
+		VALUES
+			(
+			#{userName},
+			#{loginName},
+			#{password},
+			#{createTime},
+			#{updateTime},
+			#{brithday},
+			#{salt},
+			#{weight}
+			);
 	</insert>
 
 </mapper>
