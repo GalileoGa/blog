@@ -35,7 +35,7 @@
 
 	<update id="updateUser" parameterType="User">
 		UPDATE zn_user
-		<trim prefix="set" suffixOverrides="AND">
+		<trim prefix="SET" suffixOverrides="AND">
 			<if test="userName != null and userName != ''">
 				userName = #{userName} AND
 			</if>
