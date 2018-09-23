@@ -34,7 +34,7 @@ public class RedisClient {
         config.setMaxWaitMillis(10000);
         config.setTestOnBorrow(false);
 
-        jedisPool = new JedisPool(config, "127.0.0.1", 6379);
+        jedisPool = new JedisPool(config, "139.199.122.47", 6379);
     }
 
     /**
@@ -283,10 +283,62 @@ public class RedisClient {
     }
 
     private void SortedSetOperate() {
+        System.out.println("======================zset==========================");
+        // 清空数据
+        System.out.println(jedis.flushDB());
 
+        System.out.println("=============增=============");
+        System.out.println("zset中添加元素element001：" + shardedJedis.zadd("zset", 7.0, "element001"));
+        System.out.println("zset中添加元素element002：" + shardedJedis.zadd("zset", 8.0, "element002"));
+        System.out.println("zset中添加元素element003：" + shardedJedis.zadd("zset", 2.0, "element003"));
+        System.out.println("zset中添加元素element004：" + shardedJedis.zadd("zset", 3.0, "element004"));
+        System.out.println("zset集合中的所有元素：" + shardedJedis.zrange("zset", 0, -1));//按照权重值排序
+        System.out.println();
+
+        System.out.println("=============删=============");
+        System.out.println("zset中删除元素element002：" + shardedJedis.zrem("zset", "element002"));
+        System.out.println("zset集合中的所有元素：" + shardedJedis.zrange("zset", 0, -1));
+        System.out.println();
+
+        System.out.println("=============改=============");
+        System.out.println();
+
+        System.out.println("=============查=============");
+        System.out.println("统计zset集合中的元素中个数：" + shardedJedis.zcard("zset"));
+        System.out.println("统计zset集合中权重某个范围内（1.0——5.0），元素的个数：" + shardedJedis.zcount("zset", 1.0, 5.0));
+        System.out.println("查看zset集合中element004的权重：" + shardedJedis.zscore("zset", "element004"));
+        System.out.println("查看下标1到2范围内的元素值：" + shardedJedis.zrange("zset", 1, 2));
     }
 
     private void HashOperate() {
+        System.out.println("======================hash==========================");
+        //清空数据
+        System.out.println(jedis.flushDB());
 
+        System.out.println("=============增=============");
+        System.out.println("hashs中添加key001和value001键值对：" + shardedJedis.hset("hashs", "key001", "value001"));
+        System.out.println("hashs中添加key002和value002键值对：" + shardedJedis.hset("hashs", "key002", "value002"));
+        System.out.println("hashs中添加key003和value003键值对：" + shardedJedis.hset("hashs", "key003", "value003"));
+        System.out.println("新增key004和4的整型键值对：" + shardedJedis.hincrBy("hashs", "key004", 4l));
+        System.out.println("hashs中的所有值：" + shardedJedis.hvals("hashs"));
+        System.out.println();
+
+        System.out.println("=============删=============");
+        System.out.println("hashs中删除key002键值对：" + shardedJedis.hdel("hashs", "key002"));
+        System.out.println("hashs中的所有值：" + shardedJedis.hvals("hashs"));
+        System.out.println();
+
+        System.out.println("=============改=============");
+        System.out.println("key004整型键值的值增加100：" + shardedJedis.hincrBy("hashs", "key004", 100l));
+        System.out.println("hashs中的所有值：" + shardedJedis.hvals("hashs"));
+        System.out.println();
+
+        System.out.println("=============查=============");
+        System.out.println("判断key003是否存在：" + shardedJedis.hexists("hashs", "key003"));
+        System.out.println("获取key004对应的值：" + shardedJedis.hget("hashs", "key004"));
+        System.out.println("批量获取key001和key003对应的值：" + shardedJedis.hmget("hashs", "key001", "key003"));
+        System.out.println("获取hashs中所有的key：" + shardedJedis.hkeys("hashs"));
+        System.out.println("获取hashs中所有的value：" + shardedJedis.hvals("hashs"));
+        System.out.println();
     }
 }
