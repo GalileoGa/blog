@@ -33,4 +33,35 @@
 			);
 	</insert>
 
+	<update id="updateUser" parameterType="User">
+		UPDATE zn_user
+		<trim prefix="set" suffixOverrides="AND">
+			<if test="userName != null and userName != ''">
+				userName = #{userName} ANDid
+			</if>
+			<if test="loginName != null and loginName != ''">
+				loginName = #{loginName} AND
+			</if>
+			<if test="password != null and password != ''">
+				password = #{password} AND
+			</if>
+			<if test="createTime != null">
+				createTime = #{createTime} AND
+			</if>
+			<if test="updateTime != null">
+				updateTime = #{updateTime} AND
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday} AND
+			</if>
+			<if test="salt != null and salt != ''">
+				salt = #{salt} AND
+			</if>
+			<if test="weight != null">
+				weight = #{weight} AND
+			</if>
+		</trim>
+		WHERE id = #{}
+	</update>
+
 </mapper>
