@@ -14,7 +14,7 @@ public class User extends Common{
     private String password;
     private Date createTime;
     private Date updateTime;
-    private Date brithday;
+    private Date birthday;
     private String salt;
     private int weight;
 }

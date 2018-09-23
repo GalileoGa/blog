@@ -16,7 +16,7 @@
 			`password`,
 			`createTime`,
 			`updateTime`,
-			`brithday`,
+			`birthday`,
 			`salt`,
 			`weight`
 		)
@@ -27,7 +27,7 @@
 			#{password},
 			#{createTime},
 			#{updateTime},
-			#{brithday},
+			#{birthday},
 			#{salt},
 			#{weight}
 			);
