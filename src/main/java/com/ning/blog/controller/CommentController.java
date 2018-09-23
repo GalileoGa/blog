@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommentController {
 	@GetMapping("/comment/putcomment")
 	public String commitComment() {
-		
 		return "成功！";
 	}
 }

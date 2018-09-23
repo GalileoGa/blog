@@ -1,6 +1,6 @@
 package com.ning.blog.service;
 
-import com.ning.blog.domain.UserDO;
+import com.ning.blog.domain.User;
 import com.ning.blog.repository.UserMapper;
 import org.springframework.stereotype.Service;
 
@@ -10,18 +10,18 @@ import java.util.List;
 @Service
 public class UserService {
 
-	@Resource
-	private UserMapper userMapper;
+    @Resource
+    private UserMapper userMapper;
 
-	public List<UserDO> listUser() {
-		return userMapper.listUser();
-	}
+    public List<User> listUser() {
+        return userMapper.listUser();
+    }
 
-	public UserDO getUserById(int id) {
-		return userMapper.getUserById(id);
-	}
+    public User getUserById(int id) {
+        return userMapper.getUserById(id);
+    }
 
-	public int saveUser(UserDO user) {
-		return userMapper.insertUser(user);
-	}
+    public int saveUser(User user) {
+        return userMapper.insertUser(user);
+    }
 }
