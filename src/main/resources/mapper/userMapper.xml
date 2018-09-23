@@ -37,7 +37,7 @@
 		UPDATE zn_user
 		<trim prefix="set" suffixOverrides="AND">
 			<if test="userName != null and userName != ''">
-				userName = #{userName} ANDid
+				userName = #{userName} AND
 			</if>
 			<if test="loginName != null and loginName != ''">
 				loginName = #{loginName} AND
@@ -61,7 +61,7 @@
 				weight = #{weight} AND
 			</if>
 		</trim>
-		WHERE id = #{}
+		WHERE id = #{id}
 	</update>
 
 </mapper>
