@@ -1,6 +1,8 @@
 package com.ning.blog.test;
 
 
+import redis.clients.jedis.Jedis;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,8 +10,9 @@ import java.sql.SQLException;
 public class TestBlog {
     public static void main(String[] args) throws Exception {
         //测试数据库连接
-        testJdbcConnection();
-
+//        testJdbcConnection();
+        Jedis jedis = new Jedis("10.80.248.24");
+        System.out.println(jedis.ping());
     }
 
     private static void testJdbcConnection() throws ClassNotFoundException, SQLException {
