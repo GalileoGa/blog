@@ -1,6 +1,6 @@
 package com.ning.blog.controller;
 
-import com.ning.blog.domain.UserDO;
+import com.ning.blog.domain.User;
 import com.ning.blog.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(UserDO userDO) {
+    public String login(User userDO) {
         if(userDO != null) {
             return "/index";
         }
@@ -41,17 +41,17 @@ public class UserController {
 
     @GetMapping("/list")
     @ResponseBody
-    public List<UserDO> listUser() {
+    public List<User> listUser() {
         return userService.listUser();
     }
 
     @GetMapping("/{id}")
-    public UserDO getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
     @PostMapping("/save")
-    public String saveUser(UserDO user) {
+    public String saveUser(User user) {
         return userService.saveUser(user) == 1 ? "成功！" : "失败";
     }
 }

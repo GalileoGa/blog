@@ -10,9 +10,9 @@ spring:
       filters: stat
       driver-class-name: com.mysql.jdbc.Driver
       #基本属性
-      url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      username: root
-      password: root
+      url: jdbc:mysql://139.199.122.47:3306/ning_blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: guotongning
+      password: guotongning
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
