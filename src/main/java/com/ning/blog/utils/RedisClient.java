@@ -5,7 +5,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * 封装redis存取过程
+ *封装redis存取过程
  */
 public class RedisClient {
     //Redis服务器IP

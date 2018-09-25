@@ -3,6 +3,9 @@ package com.ning.blog.utils;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * 线程工具类，还不知道怎么写。所以就随便先写点东西，以后咋往这里面添加东西。
+ */
 public class ThreadUtil {
 
     //执行短期异步任务
