@@ -5,11 +5,16 @@
     <select id="listUser" resultType="User">
 		select * from zn_user;
 	</select>
+
+    <select id="listUserByPatam" resultType="User" parameterType="map">
+		select * from zn_user;
+		/*请加上带分页的 where语句*/
+	</select>
     <select id="getUserById" resultType="User">
 		select * from zn_user where id = #{id}
 	</select>
 
-    <insert id="insertUser" parameterType="User">
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO zn_user (
 			`userName`,
 			`loginName`,
