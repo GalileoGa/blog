@@ -1,6 +1,7 @@
 package com.ning.blog.test;
 
 
+import com.ning.blog.utils.RedisClient;
 import redis.clients.jedis.Jedis;
 
 import java.sql.Connection;
@@ -11,8 +12,14 @@ public class TestBlog {
     public static void main(String[] args) throws Exception {
         //测试数据库连接
 //        testJdbcConnection();
-        Jedis jedis = new Jedis("10.80.248.24");
-        System.out.println(jedis.ping());
+        TestRedis();
+    }
+
+    private static void TestRedis() {
+        Jedis jedis = RedisClient.getJedis();
+        String question = "郭桐宁是谁?";
+        jedis.set(question, answer);
+        System.out.println(jedis.get(question));
     }
 
     private static void testJdbcConnection() throws ClassNotFoundException, SQLException {
@@ -23,4 +30,72 @@ public class TestBlog {
         Connection connection = DriverManager.getConnection(url, user, password);
         System.out.println(connection);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static String answer = "郭桐宁是任天辙的爸爸！";
 }
