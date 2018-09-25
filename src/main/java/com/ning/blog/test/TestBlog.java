@@ -17,7 +17,7 @@ public class TestBlog {
     /**
      * @return void
      * @Author Nicholas-Ning
-     * @Description //TODO 测试redis连接书否正常
+     * @Description //TODO 测试redis连接是否正常
      * @Date 15:33 2018/9/25
      * @Param []
      **/
