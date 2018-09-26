@@ -1,5 +1,6 @@
-package com.ning.blog;
+package com.ning.blog.test;
 
+import com.ning.blog.BlogApplication;
 import com.ning.blog.domain.User;
 import com.ning.blog.service.UserService;
 import org.junit.Test;

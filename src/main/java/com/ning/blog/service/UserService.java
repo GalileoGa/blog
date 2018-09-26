@@ -2,6 +2,7 @@ package com.ning.blog.service;
 
 import com.ning.blog.domain.User;
 import com.ning.blog.repository.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,6 +14,13 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
+    public List<User> get() {
+        return userService.listUser();
+    }
+
     public List<User> listUser() {
         return userMapper.listUser();
     }
@@ -23,5 +31,8 @@ public class UserService {
 
     public int saveUser(User user) {
         return userMapper.insertUser(user);
+    }
+    public int updateUser(User user){
+        return userMapper.updateUser(user);
     }
 }

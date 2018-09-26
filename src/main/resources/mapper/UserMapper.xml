@@ -10,6 +10,7 @@
 		select * from zn_user;
 		/*请加上带分页的 where语句*/
 	</select>
+
     <select id="getUserById" resultType="User">
 		select * from zn_user where id = #{id}
 	</select>
@@ -21,7 +22,6 @@
 			`password`,
 			`createTime`,
 			`updateTime`,
-			`birthday`,
 			`salt`,
 			`weight`
 		)
@@ -32,41 +32,37 @@
 			#{password},
 			#{createTime},
 			#{updateTime},
-			#{birthday},
 			#{salt},
 			#{weight}
 			);
 	</insert>
 
-	<update id="updateUser" parameterType="User">
-		UPDATE zn_user
-		<trim prefix="SET" suffixOverrides="AND">
-			<if test="userName != null and userName != ''">
-				userName = #{userName} AND
-			</if>
-			<if test="loginName != null and loginName != ''">
-				loginName = #{loginName} AND
-			</if>
-			<if test="password != null and password != ''">
-				password = #{password} AND
-			</if>
-			<if test="createTime != null">
-				createTime = #{createTime} AND
-			</if>
-			<if test="updateTime != null">
-				updateTime = #{updateTime} AND
-			</if>
-			<if test="birthday != null">
-				birthday = #{birthday} AND
-			</if>
-			<if test="salt != null and salt != ''">
-				salt = #{salt} AND
-			</if>
-			<if test="weight != null">
-				weight = #{weight} AND
-			</if>
-		</trim>
-		WHERE id = #{id}
-	</update>
+    <update id="updateUser" parameterType="User">
+        UPDATE zn_user
+        <trim prefix=" SET " suffixOverrides=" , ">
+            <if test="userName != null and userName != ''">
+                userName = #{userName} ,
+            </if>
+            <if test="loginName != null and loginName != ''">
+                loginName = #{loginName} ,
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password} ,
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime} ,
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime} ,
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt} ,
+            </if>
+            <if test="weight != null">
+                weight = #{weight} ,
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
 
 </mapper>

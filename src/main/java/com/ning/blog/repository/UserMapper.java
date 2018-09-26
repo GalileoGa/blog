@@ -10,4 +10,5 @@ public interface UserMapper {
     List<User> listUser();
     User getUserById(int id);
     int insertUser(User user);
+    int updateUser(User user);
 }
