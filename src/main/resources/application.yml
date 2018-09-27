@@ -2,6 +2,7 @@ server:
   port: 8080
 
 spring:
+#数据库配置
   datasource:
     name: mysql_blog
     type: com.alibaba.druid.pool.DruidDataSource
@@ -13,6 +14,17 @@ spring:
       url: jdbc:mysql://139.199.122.47:3306/ning_blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: guotongning
       password: guotongning
+#Redis配置
+  redis:
+    jedis:
+      pool:
+        max-active: 8
+    timeout: 1000
+    password: guotongning
+    port: 6379
+    host: 139.199.122.47
+    database: 0
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
