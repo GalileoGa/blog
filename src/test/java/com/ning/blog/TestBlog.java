@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import redis.clients.jedis.Jedis;
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,8 @@ public class TestBlog {
     private UserService userService;
 
     @Autowired
-    RedisTemplate<String,String> redisTemplate;
+    RedisTemplate<String, String> redisTemplate;
+
     @Test
     public void testDemo() {
         System.out.println("----------------------");
@@ -62,13 +62,12 @@ public class TestBlog {
     }
 
     @Test
-    public void testRedis(){
-        redisTemplate.opsForValue().append("进入身体","水乱流");
-        System.out.println("是否包含 key'进入身体'"+redisTemplate.hasKey("进入身体"));
-        System.out.println("\t任天辙被进入身体后会？\r\n\t答案："+redisTemplate.opsForValue().get("进入身体"));
-        String result = redisTemplate.delete("进入身体")==true?"成功止水":"水继续乱流";
-        System.out.println("尝试止水\r\n止水中。。。\r\n"+result);
+    public void testRedis() {
+        System.out.println("----------------------");
+        redisTemplate.opsForValue().append("进入身体", "水乱流");
+        System.out.println("是否包含 key'进入身体'" + redisTemplate.hasKey("进入身体"));
+        System.out.println("\t任天辙被进入身体后会？\r\n\t答案：" + redisTemplate.opsForValue().get("进入身体"));
+        String result = redisTemplate.delete("进入身体") == true ? "成功止水" : "水继续乱流";
+        System.out.println("尝试止水\r\n止水中。。。\r\n" + result);
     }
-
-
 }
