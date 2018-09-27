@@ -6,9 +6,9 @@
 		select * from zn_user;
 	</select>
 
-    <select id="listUserByPatam" resultType="User" parameterType="map">
+    <select id="listUserByParam" resultType="User" parameterType="map">
 		select * from zn_user;
-		/*请加上带分页的 where语句*/
+		/*请加上带分页的 where查询语句*/
 	</select>
 
     <select id="getUserById" resultType="User">
