@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
 #数据库配置
   datasource:
@@ -14,19 +13,27 @@ spring:
       url: jdbc:mysql://139.199.122.47:3306/ning_blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: guotongning
       password: guotongning
-#Redis配置
-  redis:
+  redis: #Redis配置
     jedis:
       pool:
         max-active: 8
-    timeout: 1000
     password: guotongning
     port: 6379
     host: 139.199.122.47
     database: 0
-
-
-mybatis:
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+    servlet:
+      load-on-startup: 1
+    static-path-pattern: classpath:/static/
+  #devtools:
+  #  restart:
+  #    enabled: true
+  #    additional-paths: src/main/java
+  #    additional-exclude: classpath:/static/
+mybatis: #mybatis配置
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.ning.blog.domain
   configuration:
