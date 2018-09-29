@@ -1,16 +1,18 @@
 package com.ning.blog.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 @EqualsAndHashCode(callSuper = true)
+@Accessors(chain = true)//链式调用
 @Data
+@ToString
 public class Tips extends Common {
     private int id;
     private int userId;
     private String content;
     private int weight;
-    private int commentId;
-    private int like;
-    private int dislike;
+    private String title;
+    private int likeNum;
+    private int dislikeNum;
 }

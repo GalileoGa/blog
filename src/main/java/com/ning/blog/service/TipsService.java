@@ -19,8 +19,8 @@ public class TipsService {
     @Resource
     private TipsMapper tipsMapper;
 
-    public List<Tips> getTipsById(int id) {
-        return tipsMapper.getTipsById(id);
+    public List<Tips> getTipsByUserId(int userId) {
+        return tipsMapper.getTipsByUserId(userId);
     }
 
     public int addTips(Tips tips) {

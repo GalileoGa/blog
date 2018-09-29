@@ -10,7 +10,7 @@ spring:
       filters: stat
       driver-class-name: com.mysql.jdbc.Driver
       #基本属性
-      url: jdbc:mysql://139.199.122.47:3306/ning_blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      url: jdbc:mysql://139.199.122.47:3306/ning_blog?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
       username: guotongning
       password: guotongning
   redis: #Redis配置

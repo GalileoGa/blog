@@ -1,11 +1,14 @@
 package com.ning.blog.domain;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
+import javax.annotation.security.DenyAll;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
+@Accessors(chain = true)
 public abstract class Common {
 
     private SimpleDateFormat formatL = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

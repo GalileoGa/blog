@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ning.blog.repository.CommentMapper">
+
+    <select id="getCommentByTipsId" resultType="com.ning.blog.domain.Comment">
+        SELECT * FROM zn_comment WHERE tipsId = #{tipsId} ORDER BY id;
+    </select>
+
+    <select id="getCommentByUserId" resultType="com.ning.blog.domain.Comment">
+        SELECT * FROM zn_comment WHERE userId = #{userId} ORDER BY id;
+    </select>
+
+    <insert id="insertComment" parameterType="com.ning.blog.domain.Comment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO zn_comment (
+            userId,
+            tipsId,
+            content,
+            createTime,
+            updateTime,
+            likeNum,
+            dislikeNum
+        )
+        VALUES
+            (
+            #{userId},
+            #{tipsId},
+            #{content},
+            #{createTime},
+            #{updateTime},
+            #{likeNum},
+            #{dislikeNum}
+            );
+    </insert>
+    <update id="updateComment" parameterType="com.ning.blog.domain.Comment">
+        UPDATE zn_comment
+        <trim prefix=" SET " suffixOverrides=" , ">
+            <if test="userId != null">
+                userId = #{userId},
+            </if>
+            <if test="tipsId != null">
+                tipsId = #{tipsId},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime},
+            </if>
+            <if test="likeNum != null">
+                likeNum = #{likeNum},
+            </if>
+            <if test="dislikeNum != null">
+                dislikeNum = #{dislikeNum},
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteComment">
+        DELETE FROM zn_comment WHERE id = #{id}
+    </delete>
+</mapper>

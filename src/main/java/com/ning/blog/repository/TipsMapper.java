@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface TipsMapper {
-    List<Tips> getTipsById(int id);
+    List<Tips> getTipsByUserId(int userId);
     int insertTips(Tips tips);
     int deleteTips(int id);
     int updateTips(Tips tips);

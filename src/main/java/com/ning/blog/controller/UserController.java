@@ -2,6 +2,8 @@ package com.ning.blog.controller;
 
 import com.ning.blog.domain.User;
 import com.ning.blog.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +12,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
-
+public class UserController extends BaseController {
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
     private UserService userService;
 
@@ -22,7 +24,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(User userDO) {
-        if(userDO != null) {
+        if (userDO != null) {
             return "/index";
         }
         return "/index";
