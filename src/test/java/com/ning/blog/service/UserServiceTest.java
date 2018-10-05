@@ -2,6 +2,7 @@ package com.ning.blog.service;
 
 import com.ning.blog.domain.User;
 import com.ning.blog.repository.UserMapper;
+import com.ning.blog.utils.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,8 +40,9 @@ public class UserServiceTest {
         System.out.println("----------------------");
         Date date = new Date();
         User user = new User();
-        user.setLoginName("rentianzhe").setPassword("rentianzhe").setSalt("ERIUGYOAEIFHDLASDFRG")
-                .setUserName("任天辙").setWeight(9999999).setCreateTime(date).setUpdateTime(date);
+        user.setLoginName("rentianzhe").setPassword("rentianzhe").setSalt(StringUtil.getSalt())
+                .setUserName("任ianzhe\").setPassword(\"rentianzhe\").setSalt(StringUtil.getSalt())\n" +
+                        "                .setUserName(\"任天辙").setWeight(9999999).setCreateTime(date).setUpdateTime(date);
         String result = userMapper.insertUser(user) == 1 ? "成功" : "失败";
         System.out.println("插入" + result + ",插入的用户id：" + user.getId());
     }

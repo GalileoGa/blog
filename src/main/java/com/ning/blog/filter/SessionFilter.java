@@ -11,6 +11,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Author Nicholas-Ning
+ * @Description //TODO 用于检验是否进行过登陆
+ * @Date 16:43 2018/10/5
+ * @Param 
+ * @return
+ **/
 public class SessionFilter extends OncePerRequestFilter {
 
     @Override
@@ -36,14 +43,14 @@ public class SessionFilter extends OncePerRequestFilter {
                 if (isAjaxRequest) {
                     response.setCharacterEncoding("UTF-8");
                     //设置返回错误信息：您已经太长时间没有刷新页面
-                    response.sendError(HttpStatus.UNAUTHORIZED.value(),"您已经太长时间没有刷新页面，请刷新页面。");
+                    response.sendError(HttpStatus.UNAUTHORIZED.value(), "您已经太长时间没有刷新页面，请刷新页面。");
                     return;
                 }
                 response.sendRedirect("");
                 return;
-            }else {
+            } else {
                 //如果已经登陆过了，则继续
-                filterChain.doFilter(request,response);
+                filterChain.doFilter(request, response);
             }
         }
     }

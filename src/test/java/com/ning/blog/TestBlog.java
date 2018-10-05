@@ -1,10 +1,9 @@
 package com.ning.blog;
 
 import com.ning.blog.controller.CommentController;
-import com.ning.blog.domain.Tips;
 import com.ning.blog.domain.User;
-import com.ning.blog.service.TipsService;
 import com.ning.blog.service.UserService;
+import com.ning.blog.utils.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,10 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @SpringBootTest(classes = BlogApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -52,6 +48,12 @@ public class TestBlog {
         logger.info("查询出的User集合：{}", users);
         //这种写法就不用再拼字符串了。按照花括号顺序把后面的参数挨个填进去
         logger.info("手机号：{} 验证码：{}", phone, code);
+    }
+
+    @Test
+    public void testGetSalt() {
+        String salt = StringUtil.getSalt();
+        System.out.println("随机生成的16位大写字母：" + salt);
     }
 
 }
