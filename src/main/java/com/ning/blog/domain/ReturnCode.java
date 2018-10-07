@@ -50,7 +50,7 @@ public enum ReturnCode {
     private String chineseDesc;
 
     public static String str2JsonStr(final Object type) {
-            if (null == type || type.equals(""))
+        if (null == type || type.equals(""))
             return "{'code':'-100000','chineseDesc':'类型为空','englishDesc':'type is null'}";
         for (ReturnCode code : ReturnCode.values()) {
             if (code.getCode().equals(type.toString())) {

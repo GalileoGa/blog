@@ -15,7 +15,7 @@ import java.util.List;
  * @Author Nicholas-Ning
  * @Description //TODO 用于检验是否进行过登陆
  * @Date 16:43 2018/10/5
- * @Param 
+ * @Param
  * @return
  **/
 public class SessionFilter extends OncePerRequestFilter {
@@ -24,6 +24,9 @@ public class SessionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //不过滤的url
         List<String> notFilter = new ArrayList<>();
+        notFilter.add("/index");//首页
+        notFilter.add("/login");//登陆
+        notFilter.add("/logout");//等出
         //请求uri
         String requestURI = request.getRequestURI();
         //是否过滤

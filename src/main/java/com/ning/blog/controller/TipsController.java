@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +32,7 @@ public class TipsController extends BaseController {
     @Autowired
     private TipsService tipsService;
 
-    @RequestMapping("/addTips")
-
+    @RequestMapping(value = "/addTips", method = RequestMethod.POST )
     public Map<String, Object> addTips(HttpServletRequest request, HttpServletResponse response, Tips tips) {
         logger.info("添加一个Tips");
         Map<String, Object> returnMap = getReturnMap();
@@ -43,7 +43,7 @@ public class TipsController extends BaseController {
         return returnMap;
     }
 
-    @RequestMapping("/UserTips")
+    @RequestMapping(value = "/UserTips", method = RequestMethod.POST)
     public Map<String, Object> userTIps(HttpServletRequest request, HttpServletResponse response) {
         logger.info("查询一波UserTips");
         Map<String, Object> returnMap = getReturnMap();

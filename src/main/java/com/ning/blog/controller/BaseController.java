@@ -12,7 +12,7 @@ import java.util.Map;
  * Version:1.0
  */
 public abstract class BaseController {
-    protected static final String RETURNCODE = "returnCode";
+    protected static final String RETURNCODE = "RETURNCODE";
 
     /**
      * @return 获取一个返回的map，默认放入了操作成功的返回json。key = returnCode value = ReturnCode.SUCCESS
