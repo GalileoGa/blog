@@ -55,4 +55,14 @@ public class IndexController extends BaseController {
         return "top";
     }
 
+    @RequestMapping("login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("regist")
+    public String regist() {
+        return "regist";
+}
+
 }

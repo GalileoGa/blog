@@ -38,7 +38,7 @@ public class TipsController extends BaseController {
         Map<String, Object> returnMap = getReturnMap();
         int result = tipsService.addTips(tips);
         if (result != 1) {
-            setReturnCode(returnMap, ReturnCode.ERROR);
+            setReturnCode(returnMap, ReturnCode.ERROR.getCode());
         }
         return returnMap;
     }

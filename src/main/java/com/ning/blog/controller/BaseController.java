@@ -19,11 +19,11 @@ public abstract class BaseController {
      */
     Map<String, Object> getReturnMap() {
         HashMap<String, Object> returnMap = new HashMap<>();
-        returnMap.put(RETURNCODE, ReturnCode.str2JsonStr(ReturnCode.SUCCESS));
+        returnMap.put(RETURNCODE, ReturnCode.str2JsonStr(ReturnCode.SUCCESS.getCode()));
         return returnMap;
     }
 
-    void setReturnCode(Map<String, Object> map, ReturnCode returnCode) {
+    void setReturnCode(Map<String, Object> map, String returnCode) {
         map.put(RETURNCODE, ReturnCode.str2JsonStr(returnCode));
     }
 

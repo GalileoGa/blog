@@ -1,5 +1,6 @@
 package com.ning.blog.controller;
 
+import com.ning.blog.domain.ReturnCode;
 import com.ning.blog.domain.User;
 import com.ning.blog.service.UserService;
 import org.slf4j.Logger;
@@ -8,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -23,22 +27,28 @@ public class UserController extends BaseController {
     }
 
     @PostMapping("/login")
-    public String login(User userDO) {
-        if (userDO != null) {
-            return "/index";
+    @ResponseBody
+    public Map<String, Object> login(HttpServletRequest request, User user) {
+        String loginName = user.getLoginName();
+        String password = user.getPassword();
+        logger.info("登陆:用户名:{} 密码:{}", loginName, password);
+        Map<String, Object> returnMap = getReturnMap();
+        User loginUser = userService.checkUser(user);
+        //登陆失败
+        if (loginUser == null) {
+            setReturnCode(returnMap, ReturnCode.LOGINERROR.getCode());
+            return returnMap;
         }
-        return "/index";
+        //登陆成功
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(60 * 60 * 1000);//设置session一小时过期
+        session.setAttribute("loginUser", loginUser);
+        return returnMap;
     }
 
     @GetMapping("/index")
     public String index() {
         return "index";
-    }
-
-    @GetMapping("/url")
-    @ResponseBody
-    public String getUrl() {
-        return "https://github.com/GalileoGa/blog.git";
     }
 
     @GetMapping("/list")
