@@ -1,5 +1,7 @@
 package com.ning.blog.filter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -19,6 +21,7 @@ import java.util.List;
  * @return
  **/
 public class SessionFilter extends OncePerRequestFilter {
+    private static final Logger logger = LoggerFactory.getLogger(SessionFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -30,6 +33,7 @@ public class SessionFilter extends OncePerRequestFilter {
         //请求uri
         String requestURI = request.getRequestURI();
         //是否过滤
+        logger.info("本次访问路径：" + requestURI);
         boolean doFilter = true;
         for (String url : notFilter) {//包含则不过滤
             if (notFilter.indexOf(url) != -1) {
