@@ -16,4 +16,13 @@ public class User extends Common {
     private String password;
     private String salt;
     private int weight;
+
+    public boolean equals(Object obj) {
+        if (obj instanceof User) {
+            User user = (User) obj;
+            return (loginName.equals(user.loginName));
+        }
+        return super.equals(obj);
+    }
+
 }

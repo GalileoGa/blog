@@ -30,6 +30,10 @@ public class UserService {
         return userMapper.getUserByParam(param);
     }
 
+    public User getUserByParam(Map<String, Object> param) {
+        return userMapper.getUserByParam(param);
+    }
+
     public List<User> listUser() {
         return userMapper.listUser();
     }

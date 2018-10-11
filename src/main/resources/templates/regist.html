@@ -17,11 +17,11 @@
     <script src="/js/regist.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>Unique Login Form</h1>
+<div id="msg" style="display: none;"></div>
 <div class="log">
     <div class="content2">
-        <h2>Sign Up Form</h2>
-        <span onclick="window.location.href='http://localhost:8080/regist'" onmousemove="this.style='color: green'"
+        <h2>Sign Up</h2>
+        <span onclick="window.location.href='http://localhost:8080/login'" onmousemove="this.style='color: green'"
               onmouseleave="this.style='color: white'">Sign In</span>
         <input id="loginaccount" type="text" name="userid" value="ACCOUNT" onfocus="this.value = '';"
                onblur="if (this.value == '') {this.value = 'ACCOUNT';}">
@@ -32,6 +32,7 @@
         <input id="loginpassword2" type="password" name="password" value="PASSWORD" onfocus="this.value = '';"
                onblur="if (this.value == '') {this.value = 'PASSWORD';}">
         <input id="submit" type="submit" onclick="regist()" class="register" value="Register">
+        <pre id="aa" style="color: #E2523A;background-color: rgba(255,255,255,0.1);font-size: 20px;"></pre>
     </div>
     <div class="clear"></div>
 </div>

@@ -18,12 +18,11 @@
     <!-- /css files -->
 </head>
 <body>
-<h1>king dandan blog</h1>
-<div id="msg"></div>
+<div id="msg" style="display: none;"></div>
 <div class="log">
     <div class="content1">
         <h2>Sign In</h2>
-        <span onclick="window.location.href='http://localhost:8080/login'" onmousemove="this.style='color: green'"
+        <span onclick="window.location.href='http://localhost:8080/regist'" onmousemove="this.style='color: green'"
               onmouseleave="this.style='color: white'">Sign Up</span>
         <input id="loginaccount" type="text" name="loginName" value="USERNAME" onfocus="this.value = '';"
                onblur="if (this.value == '') {this.value = 'USERNAME';}">
@@ -34,7 +33,7 @@
             <input type="reset" class="reset" value="Reset">
             <div class="clear"></div>
         </div>
-        <pre id="aa" style="color: red"></pre>
+        <pre id="aa" style="color: #E2523A;background-color: rgba(255,255,255,0.1);font-size: 20px;"></pre>
     </div>
     <div class="clear"></div>
 </div>

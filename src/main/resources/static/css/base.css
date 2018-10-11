@@ -209,7 +209,7 @@ header {
 
 .search_ico {
     background: #000000 url(../images/searchbg.png) no-repeat center;
-    z-index: 90;
+    z-index: 45;
 }
 
 .search_open {

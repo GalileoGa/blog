@@ -2,7 +2,6 @@
 function login() {
     var loginaccount = document.getElementById("loginaccount").value;
     var loginpassword = document.getElementById("loginpassword").value;
-    alert(loginaccount+"::"+loginpassword)
     $.ajax({
         url: '/user/login',
         type: "POST",
@@ -27,13 +26,13 @@ function login() {
             }
         },
         error: function (data) {
-
         }
     });
 }
+
 //回车键等于点击登陆按钮
-$(document).keyup(function(event){
-    if(event.keyCode ==13){
+$(document).keyup(function (event) {
+    if (event.keyCode == 13) {
         $("#submit").trigger("click");
     }
 });

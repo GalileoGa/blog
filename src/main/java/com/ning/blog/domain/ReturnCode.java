@@ -12,9 +12,9 @@ import lombok.ToString;
 public enum ReturnCode {
     SUCCESS("000000", "success", "成功"),
     ERROR("000001", "error", "失败"),
-    LOGINERROR("000002", "Incorrect username or password", "账号或密码错误");
-//    ERROR("000001", "error", "失败"),
-//    ERROR("000001", "error", "失败"),
+    LOGINERROR("000002", "Incorrect username or password", "账号或密码错误"),
+    INFORMATIONERROR("000003", "Incomplete information", "信息不完整"),
+    REPEATREGISTRATION("000004", "Repeat registration", "重复注册");
 //    ERROR("000001", "error", "失败"),
 //    ERROR("000001", "error", "失败"),
 //    ERROR("000001", "error", "失败"),
