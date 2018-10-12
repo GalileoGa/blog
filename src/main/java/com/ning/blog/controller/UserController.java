@@ -65,6 +65,14 @@ public class UserController extends BaseController {
         return returnMap;
     }
 
+    @GetMapping("/currentUser")
+    @ResponseBody
+    public User getCurrentUser(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Object loginUser = session.getAttribute("loginUser");
+        return (User)loginUser;
+    }
+
     @GetMapping("/index")
     public String index() {
         return "index";

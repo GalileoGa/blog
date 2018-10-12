@@ -1,11 +1,9 @@
 package com.ning.blog.domain;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 @Accessors(chain = true)//链式调用

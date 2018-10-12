@@ -1,4 +1,21 @@
 ﻿//设置用户名称欢迎词
+window.onload(
+
+    // 加载当前用户名
+    $.ajax({
+        url: '/user/currentUser',
+        type: 'GET',
+        success: function (data) {
+            if (data.userName != null) {
+                $('#welcomeusername').text(data.userName+'的博客');
+            }
+        },
+        error: function () {
+            alert("网络错误！！我兄弟巨没面子！！");
+        }
+    })
+
+);
 $(document).ready(function () {
     //检测ie 6789
     if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
