@@ -2,6 +2,7 @@ package com.ning.blog.controller;
 
 import com.ning.blog.domain.ReturnCode;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  */
 public abstract class BaseController {
     protected static final String RETURNCODE = "RETURNCODE";
-
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     /**
      * @return 获取一个返回的map，默认放入了操作成功的返回json。key = returnCode value = ReturnCode.SUCCESS
      */

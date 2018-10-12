@@ -63,6 +63,6 @@ public class IndexController extends BaseController {
     @RequestMapping("regist")
     public String regist() {
         return "regist";
-}
+    }
 
 }

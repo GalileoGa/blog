@@ -3,7 +3,11 @@
 <mapper namespace="com.ning.blog.repository.TipsMapper">
 
     <select id="getTipsByUserId" resultType="Tips">
-        select * from zn_tips where userId = #{userId};
+        SELECT * FROM zn_tips WHERE userId = #{userId};
+    </select>
+
+    <select id="getTipsById" resultType="Tips">
+        select * from zn_tips where id = #{id}
     </select>
 
     <insert id="insertTips" parameterType="Tips" useGeneratedKeys="true" keyProperty="id">
@@ -12,6 +16,7 @@
         `createTime`,
         `updateTime`,
         `content`,
+        `blogimgs`,
         `weight`,
         `title`,
         `likeNum`,
@@ -23,6 +28,7 @@
         #{createTime},
         #{updateTime},
         #{content},
+        #{blogimgs},
         #{weight},
         #{title},
         #{likeNum},
@@ -44,6 +50,9 @@
             </if>
             <if test="content != null and content != ''">
                 content = #{content} ,
+            </if>
+            <if test="blogimgs != null and blogimgs != ''">
+                blogimgs = #{blogimgs} ,
             </if>
             <if test="weight != null and weight != ''">
                 weight = #{weight} ,

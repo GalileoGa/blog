@@ -15,4 +15,5 @@ public class Tips extends Common {
     private String title;
     private int likeNum;
     private int dislikeNum;
+    private String blogimgs;
 }
