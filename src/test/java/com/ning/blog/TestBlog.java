@@ -56,4 +56,13 @@ public class TestBlog {
         System.out.println("随机生成的16位大写字母：" + salt);
     }
 
+    @Test
+    public void testSplit() {
+        String str = "1";
+        String[] split = str.split(",");
+        for (String string : split) {
+            System.out.println(string);
+        }
+    }
+
 }

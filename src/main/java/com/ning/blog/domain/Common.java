@@ -3,7 +3,6 @@ package com.ning.blog.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.annotation.security.DenyAll;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

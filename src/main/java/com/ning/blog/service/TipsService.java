@@ -23,6 +23,10 @@ public class TipsService {
         return tipsMapper.getTipsByUserId(userId);
     }
 
+    public Tips getTipsById(int id){
+        return tipsMapper.getTipsById(id);
+    }
+
     public int addTips(Tips tips) {
         return tipsMapper.insertTips(tips);
     }
