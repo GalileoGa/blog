@@ -3,7 +3,6 @@ package com.ning.blog.controller;
 import com.ning.blog.domain.ReturnCode;
 import com.ning.blog.domain.User;
 import com.ning.blog.service.UserService;
-import com.ning.blog.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -41,8 +40,6 @@ public class UserController extends BaseController {
         if (user.equals(user1)) {
             setReturnCode(returnMap, ReturnCode.REPEATREGISTRATION.getCode());
         }
-        user.setSalt(StringUtil.getSalt());//生成用户密码加密盐值
-        user.setWeight(0);//用户初始权重0
         setReturnCode(returnMap, userService.saveUser(user) == 1 ? ReturnCode.SUCCESS.getCode() : ReturnCode.ERROR.getCode());
         return returnMap;
     }
