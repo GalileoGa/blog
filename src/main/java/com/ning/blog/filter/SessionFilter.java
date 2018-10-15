@@ -7,6 +7,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.List;
  * @Param
  * @return
  **/
+@WebFilter(filterName = "sessionFilter", urlPatterns = {"/*"})
 public class SessionFilter extends OncePerRequestFilter {
     private static final Logger logger = LoggerFactory.getLogger(SessionFilter.class);
 
@@ -34,6 +36,15 @@ public class SessionFilter extends OncePerRequestFilter {
         String requestURI = request.getRequestURI();
         //是否过滤
         logger.info("本次访问路径：" + requestURI);
+        //静态资源过滤
+//        AntPathMatcher urlMatcher = new AntPathMatcher();
+//        if (urlMatcher.match("/**.js", requestURI)
+//                || urlMatcher.match("/**.png", requestURI)
+//                || urlMatcher.match("/**.jpg", requestURI)
+//                || urlMatcher.match("/**.css", requestURI)
+//                || urlMatcher.match("/**.ico", requestURI)) {
+//            filterChain.doFilter(request, response);
+//        }
         boolean doFilter = true;
         for (String url : notFilter) {//包含则不过滤
             if (notFilter.indexOf(url) != -1) {
@@ -53,7 +64,7 @@ public class SessionFilter extends OncePerRequestFilter {
                     response.sendError(HttpStatus.UNAUTHORIZED.value(), "您已经太长时间没有刷新页面，请刷新页面。");
                     return;
                 }
-                response.sendRedirect("");
+                response.sendRedirect("index");
                 return;
             } else {
                 //如果已经登陆过了，则继续

@@ -44,9 +44,6 @@ public class TipsController extends BaseController {
     public Map<String, Object> addTips(HttpServletRequest request, HttpServletResponse response, Tips tips) {
         logger.info("添加一个Tips");
         Map<String, Object> returnMap = getReturnMap();
-        tips.setLikeNum(0);
-        tips.setDislikeNum(0);
-        tips.setWeight(0);
         int result = tipsService.addTips(tips);
         if (result != 1) {
             setReturnCode(returnMap, ReturnCode.ERROR.getCode());

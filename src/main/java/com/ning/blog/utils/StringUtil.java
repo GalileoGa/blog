@@ -7,6 +7,9 @@ package com.ning.blog.utils;
  * Version:1.0
  */
 public class StringUtil {
+
+    public static String DATE_FORMAT = "HH:mm:ss";
+
     public static String getSalt() {
         StringBuffer str = new StringBuffer();
         for (int i = 0; i < 16; i++) {

@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest(classes = BlogApplication.class)
@@ -63,6 +66,13 @@ public class TestBlog {
         for (String string : split) {
             System.out.println(string);
         }
+    }
+
+    @Test
+    public void testFormatter() throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(StringUtil.DATE_FORMAT);
+        Date parse = simpleDateFormat.parse("17:30:00");
+        System.out.println("时间："+parse);
     }
 
 }

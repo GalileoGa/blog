@@ -7,13 +7,15 @@ import com.ning.blog.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -67,30 +69,10 @@ public class UserController extends BaseController {
 
     @GetMapping("/currentUser")
     @ResponseBody
-    public User getCurrentUser(HttpServletRequest request){
+    public User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object loginUser = session.getAttribute("loginUser");
-        return (User)loginUser;
+        return (User) loginUser;
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "index";
-    }
-
-    @GetMapping("/list")
-    @ResponseBody
-    public List<User> listUser() {
-        return userService.listUser();
-    }
-
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
-        return userService.getUserById(id);
-    }
-
-    @PostMapping("/save")
-    public String saveUser(User user) {
-        return userService.saveUser(user) == 1 ? "成功！" : "失败";
-    }
 }
