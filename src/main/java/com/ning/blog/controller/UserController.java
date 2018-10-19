@@ -57,7 +57,7 @@ public class UserController extends BaseController {
     public Map<String, Object> login(HttpServletRequest request, User user) {
         String loginName = user.getLoginName();
         String password = user.getPassword();
-        logger.info("登陆:用户名:{} 密码:{}", loginName, password);
+        logger.info("登陆:用户名:{} 密码:{}", loginName, password);//eg-->登陆:用户名:{guotongning} 密码:{guotongning}
         Map<String, Object> returnMap = getReturnMap();
         User loginUser = userService.checkUser(user);
         //登陆失败
