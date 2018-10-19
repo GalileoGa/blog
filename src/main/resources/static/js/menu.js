@@ -23,7 +23,7 @@ window.onload = function () {
                 var sib = siblings(sec.parentNode);
                 var otherArr = [];
                 var arrowClass = [];
-                // 排他 secondary arrowRot obFocus
+                // 排泄 secondary arrowRot obFocus
                 for (var j = 0; j < sib.length; j++) {
                     var sibSec = sib[j].getElementsByTagName('*');
                     for (var i = 0; i < sibSec.length; i++) {

@@ -7,6 +7,8 @@ window.onload(
         type: 'GET',
         success: function (data) {
             if (data.userName != null) {
+                var loginandregistdiv =  $("#loginandregist");
+                loginandregistdiv.empty();
                 $('#welcomeusername').text(data.userName+'的博客');
             }
         },

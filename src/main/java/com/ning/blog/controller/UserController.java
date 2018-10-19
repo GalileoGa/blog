@@ -24,6 +24,13 @@ public class UserController extends BaseController {
     @Resource
     private UserService userService;
 
+    /**
+     * @return java.util.Map<java.lang.String   ,   java.lang.Object>
+     * @Author Nicholas-Ning
+     * @Description //TODO 待完善的功能：用户密码的脱敏
+     * @Date 15:18 2018/10/19
+     * @Param [user]
+     **/
     @PostMapping("/regist")
     @ResponseBody
     public Map<String, Object> signUp(User user) {
@@ -35,10 +42,11 @@ public class UserController extends BaseController {
         logger.info("用户注册：姓名{} 账号{} 密码{}", user.getUserName(), user.getLoginName(), user.getPassword());
         Map<String, Object> param = new HashMap<>();
         param.put("loginName", user.getLoginName());
-        param.put("password", user.getPassword());
         User user1 = userService.getUserByParam(param);
-        if (user.equals(user1)) {
+        //用户名被占用的情况
+        if (user.getLoginName().equals(user1.getLoginName())) {
             setReturnCode(returnMap, ReturnCode.REPEATREGISTRATION.getCode());
+            return returnMap;
         }
         setReturnCode(returnMap, userService.saveUser(user) == 1 ? ReturnCode.SUCCESS.getCode() : ReturnCode.ERROR.getCode());
         return returnMap;
@@ -67,9 +75,7 @@ public class UserController extends BaseController {
     @GetMapping("/currentUser")
     @ResponseBody
     public User getCurrentUser(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Object loginUser = session.getAttribute("loginUser");
-        return (User) loginUser;
+        return (User) request.getSession().getAttribute("loginUser");
     }
 
 }

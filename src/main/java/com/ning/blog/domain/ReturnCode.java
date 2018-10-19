@@ -14,8 +14,8 @@ public enum ReturnCode {
     ERROR("000001", "error", "失败"),
     LOGINERROR("000002", "Incorrect username or password", "账号或密码错误"),
     INFORMATIONERROR("000003", "Incomplete information", "信息不完整"),
-    REPEATREGISTRATION("000004", "Repeat registration", "重复注册");
-//    ERROR("000001", "error", "失败"),
+    REPEATREGISTRATION("000004", "Repeat registration", "账号已被占用");
+//    ERROR("000005", "error", "失败");
 //    ERROR("000001", "error", "失败"),
 //    ERROR("000001", "error", "失败"),
 //    ERROR("000001", "error", "失败"),

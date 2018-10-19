@@ -29,25 +29,20 @@ public class SessionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //不过滤的url
         List<String> notFilter = new ArrayList<>();
-        notFilter.add("/index");//首页
-        notFilter.add("/login");//登陆
-        notFilter.add("/logout");//等出
+        notFilter.add("/login");
+        notFilter.add("/user/login");
         //请求uri
         String requestURI = request.getRequestURI();
         //是否过滤
-        logger.info("本次访问路径：" + requestURI);
+        logger.info("进入SessionFilter ---> 本次访问路径："+requestURI);
         //静态资源过滤
-//        AntPathMatcher urlMatcher = new AntPathMatcher();
-//        if (urlMatcher.match("/**.js", requestURI)
-//                || urlMatcher.match("/**.png", requestURI)
-//                || urlMatcher.match("/**.jpg", requestURI)
-//                || urlMatcher.match("/**.css", requestURI)
-//                || urlMatcher.match("/**.ico", requestURI)) {
-//            filterChain.doFilter(request, response);
-//        }
+        if (requestURI.contains(".js") || requestURI.contains(".css") ||requestURI.contains(".jpg") || requestURI.contains(".png")|| requestURI.contains(".ico")){
+            logger.info("静态请求，放行。");
+            filterChain.doFilter(request, response);
+        }
         boolean doFilter = true;
         for (String url : notFilter) {//包含则不过滤
-            if (notFilter.indexOf(url) != -1) {
+            if (notFilter.indexOf(requestURI) != -1) {
                 doFilter = false;
                 break;
             }
@@ -64,13 +59,12 @@ public class SessionFilter extends OncePerRequestFilter {
                     response.sendError(HttpStatus.UNAUTHORIZED.value(), "您已经太长时间没有刷新页面，请刷新页面。");
                     return;
                 }
-                response.sendRedirect("index");
+                response.sendRedirect("/login");
                 return;
-            } else {
-                //如果已经登陆过了，则继续
-                filterChain.doFilter(request, response);
             }
         }
+        //如果登陆过了则继续
+        filterChain.doFilter(request, response);
     }
 
     private boolean isAjaxRequest(HttpServletRequest request) {
